@@ -1,0 +1,28 @@
+Onion Mimari kullanmamýz asýl amacý proje yarýn bir gün hem mobil hem masaüstü hem web hem oracle hem Ado.Net hem Api ile kullanýlacak gibi bir durumun olmasýdýr. 
+
+Onion Mimari: 
+		DAL Katmaný: DesingPatterns -> Repositories
+		BLL: Management modülü, hizmet.
+
+ SOLID --> Open Closed Principle => projenin kaynak kodlarýnda deðiþiklik yapmadan esneklik kazanma
+TEKNOLOJÝ DEÐÝÞTÝRME (aþþýrý saðlam bir olay)
+Interface mantýðý: Doðru yazýlmýþ bir interface sayesinde olasý bir EntityFramework'ten ADO.Net'e geçmek vs gibi bir teknoloji deðiþiminde esneklik kazanmýþ oluruz. 
+
+	Bunu yapmak için yalnýzca BLL katmanýnda using ifadesini kullanýlacak teknoloji olarak deðiþtirmek yeterli olur. UI katmanýnda bile hiçbir deðiþiklik yapmaya gerek kalmaz
+
+	Kullanýlacak teknolojide ise DAL katmanýnda örneðin bu projede olduðu gibi EFRepository yerine ADORepository kullanmak isteyebiliriz. EntityFramework için kullandýðýmýz repositoryler neyse ayný o þekilde kullanabiliriz.
+
+
+DAL KATMANI
+
+GenericRepository:
+	IntRep: Bir interfacetir ne olursa olsun deðiþmez. Standart metodlarý oluþturmak için kullanýlýr. Her platformda buradaki metodlar kullanýlýr. BaseRepository sayesinde kod tekrarý önlenir.
+	EFRepository: EntityFramework için kullanýlýr. Bütün classlarýmýzýn repositorylerini buraya açabiliriz. BaseRepository kesinlikle abstract olmamasý lazým yoksa constructor içinde instance alamayýz.
+		
+
+BLL KATMANI
+
+Management(servis, hizmet):
+	BaseManager:
+	ConcManager:
+	IntManager:
